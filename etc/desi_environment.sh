@@ -9,6 +9,9 @@ if [[ $(basename ${SHELL}) == "bash" || $(basename ${SHELL}) == "sh" ]]; then
     if [[ "${NERSC_HOST}" == "edison" ]]; then
         hpcports shared_gnu
     fi
+    if [[ "${NERSC_HOST}" == "hopper" ]]; then
+        hpcports shared_gnu
+    fi
     if [[ "${NERSC_HOST}" == "carver" ]]; then
         #- On carver, check if we are Scientific Linux 5, 6, or default
         if [[ "${CHOS}" != "sl6carver" ]]; then
@@ -23,9 +26,6 @@ if [[ $(basename ${SHELL}) == "bash" || $(basename ${SHELL}) == "sh" ]]; then
             echo "After switching to SL6, source desi_environment.sh again."
             return
         fi
-        hpcports gnu
-    fi
-    if [[ "${NERSC_HOST}" == "hopper" ]]; then
         hpcports gnu
     fi
     if [[ "${NERSC_HOST}" == "datatran" || "${NERSC_HOST}" == "scigate" ]]; then
