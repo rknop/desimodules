@@ -34,9 +34,9 @@ if ( `basename ${SHELL}` == "csh" || `basename ${SHELL}` == "tcsh" ) then
         module use /project/projectdirs/desi/software/modules/${NERSC_HOST}
 
         if ( $# > 0 ) then
-            module load desiModules/$1
+            module load desimodules/$1
         else
-            module load desiModules
+            module load desimodules
         endif
     else
         echo "Could not find DESI modules for ${NERSC_HOST}!"

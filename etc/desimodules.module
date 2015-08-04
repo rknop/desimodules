@@ -25,7 +25,7 @@ proc ModulesHelp {{ }} {{
 # prevents multiple versions from being loaded simultaneously.  Do not
 # change it.
 #
-set product desiModules
+set product desimodules
 set version {version}
 conflict $product
 #
@@ -92,10 +92,10 @@ if {{ [info exists env(NERSC_HOST)] }} {{
 
 
 #- DESI specific modules
-module load desiUtil
-prereq desiUtil
-module load desiTree
-prereq desiTree
+module load desiutil
+prereq desiutil
+module load desitree
+prereq desitree
 
 module load desimodel/0.3.1
 

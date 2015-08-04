@@ -1,5 +1,5 @@
 ===========
-desiModules
+desimodules
 ===========
 
 This repository provides a meta-module that can be used to load a default
