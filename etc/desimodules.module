@@ -52,7 +52,7 @@ if {{ [info exists env(NERSC_HOST)] }} {{
         module load ipython-hpcp/3.0.0_368e8239-7.1
         module load yaml-hpcp/e05740ad_e05740ad-7.1
         module load fitsio-hpcp/d1fb9f2_99093b02-7.1
-        module load requests-hpcp/2.7.0_a47b9456-7.1
+        module load requests-hpcp/2.8.1_a47b9456-7.1
     }} elseif {{ $env(NERSC_HOST) == "hopper" }} {{
         module load astropy-hpcp/1.0.1_a75855cf-2.0
         module load scipy-hpcp/0.15.1_6a2ae39e-2.0
