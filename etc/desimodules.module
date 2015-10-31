@@ -46,12 +46,12 @@ module-whatis "Sets up $product/$version in your environment."
 #- They only exist on edison and carver for now.
 if {{ [info exists env(NERSC_HOST)] }} {{
     if {{ $env(NERSC_HOST) == "edison" }} {{
-        module load astropy-hpcp/1.0.1_bb1435b3-7.0
-        module load scipy-hpcp/0.15.1_93d9a25b-7.0
-        module load matplotlib-hpcp/1.4.3_7ccdc151-7.0
-        module load ipython-hpcp/3.0.0_bc26f9c1-7.0
-        module load yaml-hpcp/d7f8375e_d7f8375e-7.0
-        module load fitsio-hpcp/a2fdf07_72a3652b-7.0
+        module load astropy-hpcp/1.0.1_32b25281-7.1
+        module load scipy-hpcp/0.15.1_5a3d8dfa-7.1
+        module load matplotlib-hpcp/1.4.3_f611a56c-7.1
+        module load ipython-hpcp/3.0.0_368e8239-7.1
+        module load yaml-hpcp/e05740ad_e05740ad-7.1
+        module load fitsio-hpcp/d1fb9f2_99093b02-7.1
         module load requests-hpcp/2.7.0_a47b9456-7.1
     }} elseif {{ $env(NERSC_HOST) == "hopper" }} {{
         module load astropy-hpcp/1.0.1_a75855cf-2.0
@@ -91,7 +91,7 @@ prereq desiutil
 module load desitree
 prereq desitree
 
-module load desimodel/0.3.1
+module load desimodel/0.3.7
 
 
 #
