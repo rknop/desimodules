@@ -91,7 +91,7 @@ prereq desiutil
 module load desitree
 prereq desitree
 
-module load desimodel/0.3.7
+module load desimodel/0.3.8
 
 
 #
