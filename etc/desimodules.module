@@ -53,6 +53,14 @@ if {{ [info exists env(NERSC_HOST)] }} {{
         module load yaml-hpcp/e05740ad_e05740ad-7.1
         module load fitsio-hpcp/d1fb9f2_99093b02-7.1
         module load requests-hpcp/2.8.1_a47b9456-7.1
+    }} elseif {{ $env(NERSC_HOST) == "cori" }} {{
+        module load astropy-hpcp/1.0.1_f4385b62-1.0
+        module load scipy-hpcp/0.15.1_3ec027f3-1.0
+        module load matplotlib-hpcp/1.4.3_5e44e5f1-1.0
+        module load ipython-hpcp/3.0.0_c49d793a-1.0
+        module load yaml-hpcp/62933e3b_62933e3b-1.0
+        module load fitsio-hpcp/d1fb9f2_8bdd6887-1.0
+        module load requests-hpcp/2.8.1_49aa3196-1.0
     }} elseif {{ $env(NERSC_HOST) == "hopper" }} {{
         module load astropy-hpcp/1.0.1_a75855cf-2.0
         module load scipy-hpcp/0.15.1_6a2ae39e-2.0
@@ -61,12 +69,13 @@ if {{ [info exists env(NERSC_HOST)] }} {{
         module load yaml-hpcp/da9c3d7c_da9c3d7c-2.0
         module load fitsio-hpcp/a2fdf07_8be048ab-2.0
     }} elseif {{ $env(NERSC_HOST) == "datatran" }} {{
-        module load astropy-hpcp/1.0.1_b448e7d4-1.0
-        module load scipy-hpcp/0.15.1_d78783c5-1.0
-        module load matplotlib-hpcp/1.4.3_ccc4eff4-1.0
-        module load ipython-hpcp/3.0.0_2c5f3712-1.0
-        module load yaml-hpcp/536a3f9b_536a3f9b-1.0
-        module load fitsio-hpcp/a2fdf07_d424107f-1.0
+        module load astropy-hpcp/1.0.1_f4385b62-1.0
+        module load scipy-hpcp/0.15.1_3ec027f3-1.0
+        module load matplotlib-hpcp/1.4.3_bfb50b98-1.0
+        module load ipython-hpcp/3.0.0_c49d793a-1.0
+        module load yaml-hpcp/62933e3b_62933e3b-1.0
+        module load fitsio-hpcp/d1fb9f2_8bdd6887-1.0
+        module load requests-hpcp/2.8.1_49aa3196-1.0
         module load subversion-hpcp
     }} elseif {{ $env(NERSC_HOST) == "scigate" }} {{
         module load astropy-hpcp/0.3.2_567b861f-1.0

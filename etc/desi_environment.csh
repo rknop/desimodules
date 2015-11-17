@@ -9,6 +9,9 @@ if ( `basename ${SHELL}` == "csh" || `basename ${SHELL}` == "tcsh" ) then
     if ( "${NERSC_HOST}" == "edison" ) then
         hpcports shared_gnu
     endif
+    if ( "${NERSC_HOST}" == "cori" ) then
+        hpcports gnu
+    endif
     if ( "${NERSC_HOST}" == "hopper" )  then
         hpcports shared_gnu
     endif
