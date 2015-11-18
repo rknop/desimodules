@@ -9,7 +9,7 @@ if [[ $(basename ${SHELL}) == "bash" || $(basename ${SHELL}) == "sh" ]]; then
     if [[ "${NERSC_HOST}" == "edison" ]]; then
         hpcports shared_gnu
     fi
-    if [[ "${NERSC_HOST}" == "cori" ]];
+    if [[ "${NERSC_HOST}" == "cori" ]]; then
         hpcports gnu
     fi
     if [[ "${NERSC_HOST}" == "hopper" ]]; then
