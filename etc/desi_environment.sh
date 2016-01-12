@@ -6,7 +6,7 @@
 #
 if [[ $(basename ${SHELL}) == "bash" || $(basename ${SHELL}) == "sh" ]]; then
     source /project/projectdirs/cmb/modules/hpcports_NERSC.sh
-    if [[ "${NERSC_HOST}" == "edison" || "${NERSC_HOST}" == "cori"]]; then
+    if [[ "${NERSC_HOST}" == "edison" || "${NERSC_HOST}" == "cori" ]]; then
         hpcports gnu
     fi
     if [[ "${NERSC_HOST}" == "datatran" || "${NERSC_HOST}" == "scigate" ]]; then
