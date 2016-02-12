@@ -46,21 +46,21 @@ module-whatis "Sets up $product/$version in your environment."
 #- They only exist on edison and carver for now.
 if {{ [info exists env(NERSC_HOST)] }} {{
     if {{ $env(NERSC_HOST) == "edison" }} {{
-        module load astropy-hpcp/1.0.1_52615729-8.0
-        module load scipy-hpcp/0.15.1_9562becd-8.0
-        module load matplotlib-hpcp/1.4.3_57d381f4-8.0
-        module load ipython-hpcp/3.0.0_e61fe562-8.0
-        module load yaml-hpcp/4bdaa839_4bdaa839-8.0
-        module load fitsio-hpcp/d1fb9f2_e6788ff4-8.0
-        module load requests-hpcp/2.8.1_259c8ae8-8.0
+        module load astropy-hpcp/1.1.1_55291603-8.1
+        module load scipy-hpcp/0.17.0_cb2729d2-8.1
+        module load matplotlib-hpcp/1.4.3_864a7e83-8.1
+        module load ipython-hpcp/3.0.0_fd11cc96-8.1
+        module load yaml-hpcp/07004441_07004441-8.1
+        module load fitsio-hpcp/d1fb9f2_e3f534e7-8.1
+        module load requests-hpcp/2.8.1_c15bd92c-8.1
     }} elseif {{ $env(NERSC_HOST) == "cori" }} {{
-        module load astropy-hpcp/1.0.1_f4385b62-1.0
-        module load scipy-hpcp/0.15.1_3ec027f3-1.0
-        module load matplotlib-hpcp/1.4.3_5e44e5f1-1.0
-        module load ipython-hpcp/3.0.0_c49d793a-1.0
-        module load yaml-hpcp/62933e3b_62933e3b-1.0
-        module load fitsio-hpcp/d1fb9f2_8bdd6887-1.0
-        module load requests-hpcp/2.8.1_49aa3196-1.0
+        module load astropy-hpcp/1.1.1_8b10e468-2.0
+        module load scipy-hpcp/0.17.0_56d518fc-2.0
+        module load matplotlib-hpcp/1.4.3_65402e69-2.0
+        module load ipython-hpcp/3.0.0_7a653da4-2.0
+        module load yaml-hpcp/bfedb388_bfedb388-2.0
+        module load fitsio-hpcp/d1fb9f2_c063df53-2.0
+        module load requests-hpcp/2.8.1_2358d8de-2.0
     }} elseif {{ $env(NERSC_HOST) == "datatran" }} {{
         module load astropy-hpcp/1.0.1_f4385b62-1.0
         module load scipy-hpcp/0.15.1_3ec027f3-1.0
@@ -68,7 +68,7 @@ if {{ [info exists env(NERSC_HOST)] }} {{
         module load ipython-hpcp/3.0.0_c49d793a-1.0
         module load yaml-hpcp/62933e3b_62933e3b-1.0
         module load fitsio-hpcp/d1fb9f2_8bdd6887-1.0
-        module load requests-hpcp/2.8.1_49aa3196-1.0
+        module load requests-hpcp
         module load subversion-hpcp
     }} elseif {{ $env(NERSC_HOST) == "scigate" }} {{
         module load astropy-hpcp/0.3.2_567b861f-1.0
@@ -78,6 +78,7 @@ if {{ [info exists env(NERSC_HOST)] }} {{
         module load yaml-hpcp/d12183c4_d12183c4-1.0
         module load fitsio-hpcp/a2fdf07_d424107f-1.0
         module load requests-hpcp
+        module load subversion-hpcp
     }}
     prereq astropy-hpcp
     prereq scipy-hpcp
