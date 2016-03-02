@@ -46,21 +46,21 @@ module-whatis "Sets up $product/$version in your environment."
 #- They only exist on edison and carver for now.
 if {{ [info exists env(NERSC_HOST)] }} {{
     if {{ $env(NERSC_HOST) == "edison" }} {{
-        module load astropy-hpcp/1.1.1_55291603-8.1
-        module load scipy-hpcp/0.17.0_cb2729d2-8.1
-        module load matplotlib-hpcp/1.4.3_864a7e83-8.1
-        module load ipython-hpcp/3.0.0_fd11cc96-8.1
-        module load yaml-hpcp/07004441_07004441-8.1
-        module load fitsio-hpcp/d1fb9f2_e3f534e7-8.1
-        module load requests-hpcp/2.8.1_c15bd92c-8.1
+        module load astropy-hpcp/1.1.1_07c4c9b6-8.2
+        module load scipy-hpcp/0.17.0_7039ef88-8.2
+        module load matplotlib-hpcp/1.4.3_50fa2ed0-8.2
+        module load ipython-hpcp/3.0.0_700d8379-8.2
+        module load yaml-hpcp/233b7798_233b7798-8.2
+        module load fitsio-hpcp/d1fb9f2_afa96454-8.2
+        module load requests-hpcp/2.8.1_3b1416d8-8.2
     }} elseif {{ $env(NERSC_HOST) == "cori" }} {{
-        module load astropy-hpcp/1.1.1_8b10e468-2.0
-        module load scipy-hpcp/0.17.0_56d518fc-2.0
-        module load matplotlib-hpcp/1.4.3_65402e69-2.0
-        module load ipython-hpcp/3.0.0_7a653da4-2.0
-        module load yaml-hpcp/bfedb388_bfedb388-2.0
-        module load fitsio-hpcp/d1fb9f2_c063df53-2.0
-        module load requests-hpcp/2.8.1_2358d8de-2.0
+        module load astropy-hpcp/1.1.1_dfca1ece-2.1
+        module load scipy-hpcp/0.17.0_acf3659f-2.1
+        module load matplotlib-hpcp/1.4.3_72a515bc-2.1
+        module load ipython-hpcp/3.0.0_41e8a8c4-2.1
+        module load yaml-hpcp/14a9f19e_14a9f19e-2.1
+        module load fitsio-hpcp/d1fb9f2_a43be3f6-2.1
+        module load requests-hpcp/2.8.1_a45a15ab-2.1
     }} elseif {{ $env(NERSC_HOST) == "datatran" }} {{
         module load astropy-hpcp/1.0.1_f4385b62-1.0
         module load scipy-hpcp/0.15.1_3ec027f3-1.0
