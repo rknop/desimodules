@@ -6,10 +6,9 @@
 #
 if [[ $(basename ${SHELL}) == "bash" || $(basename ${SHELL}) == "sh" ]]; then
     if [[ "${NERSC_HOST}" == "edison" || "${NERSC_HOST}" == "cori" ]]; then
-        source /project/projectdirs/cmb/modules/hpcports_NERSC.sh
-        hpcports gnu
+        module use /global/common/${NERSC_HOST}/contrib/desi/modulefiles
     else
-        echo "HPCPorts is not supported on ${NERSC_HOST}!"
+        echo "DESI conda environment is not supported on ${NERSC_HOST}!"
     fi
     if [[ -d /project/projectdirs/desi/software/modules/${NERSC_HOST} ]]; then
         module use /project/projectdirs/desi/software/modules/${NERSC_HOST}

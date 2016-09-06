@@ -48,33 +48,15 @@ module-whatis "Sets up $product/$version in your environment."
 if {{ [info exists env(NERSC_HOST)] }} {{
     if {{ $env(NERSC_HOST) == "edison" }} {{
         set checkpre True
-        module load astropy-hpcp/1.2.1_5fc56de5-9.0
-        module load scipy-hpcp/0.17.0_261d2fd3-9.0
-        module load matplotlib-hpcp/1.4.3_8d60f685-9.0
-        module load ipython-hpcp/3.0.0_655a190b-9.0
-        module load yaml-hpcp/a1ed8f02_a1ed8f02-9.0
-        module load fitsio-hpcp/d1fb9f2_c0563e28-9.0
-        module load requests-hpcp/2.8.1_b292912c-9.0
+        module load desi-conda/2.7-20160829
     }} elseif {{ $env(NERSC_HOST) == "cori" }} {{
         set checkpre True
-        module load astropy-hpcp/1.2.1_1f2b05e2-4.0
-        module load scipy-hpcp/0.17.0_fc9cd1dc-4.0
-        module load matplotlib-hpcp/1.4.3_f7d8d04a-4.0
-        module load ipython-hpcp/3.0.0_69f8e7b5-4.0
-        module load yaml-hpcp/6c68d4d8_6c68d4d8-4.0
-        module load fitsio-hpcp/d1fb9f2_9aff5bc6-4.0
-        module load requests-hpcp/2.8.1_8c18c9a4-4.0
+        module load desi-conda/2.7-20160829
     }} else {{
         set checkpre False
     }}
     if {{ $checkpre == "True" }} {{
-        prereq astropy-hpcp
-        prereq scipy-hpcp
-        prereq matplotlib-hpcp
-        prereq ipython-hpcp
-        prereq yaml-hpcp
-        prereq fitsio-hpcp
-        prereq requests-hpcp
+        prereq desi-conda
     }}
 }}
 
