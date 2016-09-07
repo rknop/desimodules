@@ -5,16 +5,14 @@
 # $Id$
 #
 if ( `basename ${SHELL}` == "csh" || `basename ${SHELL}` == "tcsh" ) then
-    source /project/projectdirs/cmb/modules/hpcports_NERSC.csh
     if ( "${NERSC_HOST}" == "edison" || "${NERSC_HOST}" == "cori" ) then
+        source /project/projectdirs/cmb/modules/hpcports_NERSC.csh
         hpcports gnu
-    endif
-    if ( "${NERSC_HOST}" == "datatran" || "${NERSC_HOST}" == "scigate" ) then
-        hpcports
+    else
+        echo "HPCPorts is not supported on ${NERSC_HOST}!"
     endif
     if ( -d /project/projectdirs/desi/software/modules/${NERSC_HOST} ) then
         module use /project/projectdirs/desi/software/modules/${NERSC_HOST}
-
         if ( $# > 0 ) then
             module load desimodules/$1
         else

@@ -5,12 +5,11 @@
 # $Id$
 #
 if [[ $(basename ${SHELL}) == "bash" || $(basename ${SHELL}) == "sh" ]]; then
-    source /project/projectdirs/cmb/modules/hpcports_NERSC.sh
     if [[ "${NERSC_HOST}" == "edison" || "${NERSC_HOST}" == "cori" ]]; then
+        source /project/projectdirs/cmb/modules/hpcports_NERSC.sh
         hpcports gnu
-    fi
-    if [[ "${NERSC_HOST}" == "datatran" || "${NERSC_HOST}" == "scigate" ]]; then
-        hpcports
+    else
+        echo "HPCPorts is not supported on ${NERSC_HOST}!"
     fi
     if [[ -d /project/projectdirs/desi/software/modules/${NERSC_HOST} ]]; then
         module use /project/projectdirs/desi/software/modules/${NERSC_HOST}

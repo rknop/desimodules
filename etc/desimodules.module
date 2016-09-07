@@ -42,10 +42,12 @@ module-whatis "Sets up $product/$version in your environment."
 # A mandatory dependency is a module load command followed by a prereq
 # command.  An optional dependency is not followed by a prereq statement.
 #
-#- These are the external products that we need for most DESI work
-#- They only exist on edison and carver for now.
+# These are the external products that we need for most DESI work
+# They only exist on edison and cori for now.
+#
 if {{ [info exists env(NERSC_HOST)] }} {{
     if {{ $env(NERSC_HOST) == "edison" }} {{
+        set checkpre True
         module load astropy-hpcp/1.2.1_5fc56de5-9.0
         module load scipy-hpcp/0.17.0_261d2fd3-9.0
         module load matplotlib-hpcp/1.4.3_8d60f685-9.0
@@ -54,6 +56,7 @@ if {{ [info exists env(NERSC_HOST)] }} {{
         module load fitsio-hpcp/d1fb9f2_c0563e28-9.0
         module load requests-hpcp/2.8.1_b292912c-9.0
     }} elseif {{ $env(NERSC_HOST) == "cori" }} {{
+        set checkpre True
         module load astropy-hpcp/1.2.1_1f2b05e2-4.0
         module load scipy-hpcp/0.17.0_fc9cd1dc-4.0
         module load matplotlib-hpcp/1.4.3_f7d8d04a-4.0
@@ -61,43 +64,30 @@ if {{ [info exists env(NERSC_HOST)] }} {{
         module load yaml-hpcp/6c68d4d8_6c68d4d8-4.0
         module load fitsio-hpcp/d1fb9f2_9aff5bc6-4.0
         module load requests-hpcp/2.8.1_8c18c9a4-4.0
-    }} elseif {{ $env(NERSC_HOST) == "datatran" }} {{
-        module load astropy-hpcp/1.0.1_f4385b62-1.0
-        module load scipy-hpcp/0.15.1_3ec027f3-1.0
-        module load matplotlib-hpcp/1.4.3_bfb50b98-1.0
-        module load ipython-hpcp/3.0.0_c49d793a-1.0
-        module load yaml-hpcp/62933e3b_62933e3b-1.0
-        module load fitsio-hpcp/d1fb9f2_8bdd6887-1.0
-        module load requests-hpcp
-        module load subversion-hpcp
-    }} elseif {{ $env(NERSC_HOST) == "scigate" }} {{
-        module load astropy-hpcp/0.3.2_567b861f-1.0
-        module load scipy-hpcp/0.14.0_2686a374-1.0
-        module load matplotlib-hpcp/1.3.1_f5da6b43-1.0
-        module load ipython-hpcp/0.13.2_f5da6b43-1.0
-        module load yaml-hpcp/d12183c4_d12183c4-1.0
-        module load fitsio-hpcp/a2fdf07_d424107f-1.0
-        module load requests-hpcp
-        module load subversion-hpcp
+    }} else {{
+        set checkpre False
     }}
-    prereq astropy-hpcp
-    prereq scipy-hpcp
-    prereq matplotlib-hpcp
-    prereq ipython-hpcp
-    prereq yaml-hpcp
-    prereq fitsio-hpcp
-    prereq requests-hpcp
+    if {{ $checkpre == "True" }} {{
+        prereq astropy-hpcp
+        prereq scipy-hpcp
+        prereq matplotlib-hpcp
+        prereq ipython-hpcp
+        prereq yaml-hpcp
+        prereq fitsio-hpcp
+        prereq requests-hpcp
+    }}
 }}
 
-
-#- DESI specific modules
+#
+# DESI specific modules
+#
 module load desiutil
 prereq desiutil
+
 module load desitree
 prereq desitree
 
-module load desimodel/0.4.3
-
+module load desimodel/0.4.5
 
 #
 # ENVIRONMENT SECTION
