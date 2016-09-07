@@ -52,6 +52,12 @@ if {{ [info exists env(NERSC_HOST)] }} {{
     }} elseif {{ $env(NERSC_HOST) == "cori" }} {{
         set checkpre True
         module load desi-conda/2.7-20160829
+    }} elseif {{ $env(NERSC_HOST) == "datatran" }} {{
+        set checkpre True
+        module load desi-conda/2.7-20160906
+    }} elseif {{ $env(NERSC_HOST) == "scigate" }} {{
+        set checkpre True
+        module load desi-conda/2.7-201600906
     }} else {{
         set checkpre False
     }}

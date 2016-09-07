@@ -7,6 +7,8 @@
 if ( `basename ${SHELL}` == "csh" || `basename ${SHELL}` == "tcsh" ) then
     if ( "${NERSC_HOST}" == "edison" || "${NERSC_HOST}" == "cori" ) then
         module use /global/common/${NERSC_HOST}/contrib/desi/modulefiles
+    else if ( "${NERSC_HOST}" == "datatran" || "${NERSC_HOST}" == "scigate" ) then
+        echo
     else
         echo "DESI conda environment is not supported on ${NERSC_HOST}!"
     endif
