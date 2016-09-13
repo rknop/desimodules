@@ -3,10 +3,6 @@
 pyversion="$1"
 version="$2"
 
-gcpath="/global/common/${NERSC_HOST}/contrib/desi"
-moddir="${gcpath}/modulefiles"
-moddir="${gcpath}/conda/modulefiles_test"
-
 if [ "x${version}" = "x" ]; then
     echo "Usage:  $0 <python version> <version string>"
     exit 1
@@ -14,6 +10,19 @@ fi
 if [ "x${pyversion}" = "x" ]; then
     echo "Usage:  $0 <python version> <version string>"
     exit 1
+fi
+
+prefixpath=""
+moddir=""
+basetemp=""
+if [ "x${NERSC_HOST}" = "xdatatran" ]; then
+    prefixpath="/project/projectdirs/desi/software/${NERSC_HOST}/conda"
+    moddir="${prefixpath}/modulefiles"
+    basetemp="module_conda-base-dtn.template"
+else
+    prefixpath="/global/common/${NERSC_HOST}/contrib/desi/conda"
+    moddir="/global/common/${NERSC_HOST}/contrib/desi/modulefiles"
+    basetemp="module_conda-base.template"
 fi
 
 mkdir -p "${moddir}/desi-conda"
@@ -26,11 +35,11 @@ modextrafile="${moddir}/desi-conda-extra/${pyversion}-${version}"
 
 # conda base module
 
-prefix="${gcpath}/conda/conda_${pyversion}-${version}"
+prefix="${prefixpath}/conda_${pyversion}-${version}"
 mkdir -p "${prefix}/bin"
 mkdir -p "${prefix}/lib/python${pyversion}/site-packages"
 
-cat module_conda-base.template | sed \
+cat ${basetemp} | sed \
 -e "s#@PROJECT@#desi#g" \
 -e "s#@PREFIX@#${prefix}#g" \
 -e "s#@VERSION@#${version}#g" \
@@ -46,7 +55,7 @@ cat module_conda.template | sed \
 
 # conda extra module
 
-prefix="${gcpath}/conda/conda_${pyversion}-${version}_extra"
+prefix="${prefixpath}/conda_${pyversion}-${version}_extra"
 mkdir -p "${prefix}/bin"
 mkdir -p "${prefix}/include"
 mkdir -p "${prefix}/lib/python${pyversion}/site-packages"
@@ -77,4 +86,4 @@ cat module_version.template | sed \
 
 # this script should be running as user desi!
 chgrp -R desi ${moddir}
-chmod -R g+rX,o-rwx ${moddir}
+chmod -R g+rX,g-w,o-rwx ${moddir}

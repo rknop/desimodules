@@ -3,8 +3,6 @@
 pyversion="$1"
 version="$2"
 
-gcpath="/global/common/${NERSC_HOST}/contrib/desi"
-
 if [ "x${version}" = "x" ]; then
     echo "Usage:  $0 <python version> <version string>"
     exit 1
@@ -14,7 +12,41 @@ if [ "x${pyversion}" = "x" ]; then
     exit 1
 fi
 
-prefix="${gcpath}/conda/conda_${pyversion}-${version}_extra"
+prefixpath=""
+if [ "x${NERSC_HOST}" = "xdatatran" ]; then
+    prefixpath="/project/projectdirs/desi/software/${NERSC_HOST}/conda"
+    export CC="gcc"
+    export CXX="g++"
+    export FC="gfortran"
+    export CFLAGS="-O3 -fPIC"
+    export CXXFLAGS="-O3 -fPIC"
+    export FCFLAGS="-O3 -fPIC"
+
+    blas="-L${prefix}/lib -lopenblas"
+    lapack=""
+
+    jmake="-j 4"
+else
+    prefixpath="/global/common/${NERSC_HOST}/contrib/desi/conda"
+    export CC="gcc"
+    export CXX="g++"
+    export MPICC="cc"
+    export MPICXX="CC"
+    export CFLAGS="-O3 -fPIC"
+    export CXXFLAGS="-O3 -fPIC"
+    export MPI_CPPFLAGS="/opt/cray/mpt/7.4.1/gni/mpich-gnu/5.1/include"
+    export MPI_LDFLAGS="/opt/cray/mpt/7.4.1/gni/mpich-gnu/5.1/lib"
+    export MPI_CXXLIB="mpichcxx"
+    export MPI_LIB="mpich"
+
+    blas="-L/opt/intel/composer_xe_2015.1.133/mkl/lib/intel64 -lmkl_rt -fopenmp -lpthread -lm -ldl"
+    lapack="-lmkl_lapack95_lp64"
+
+    jmake="-j 4"
+fi
+
+src="/project/projectdirs/desi/software/src/conda"
+prefix="${prefixpath}/conda_${pyversion}-${version}_extra"
 
 # 2 or 3
 ver=`echo ${pyversion} | cut -c1`
@@ -25,23 +57,6 @@ if [ "${ver}" != "2" ]; then
     python="python${ver}"
     pyconfig="python${ver}-config"
 fi
-
-export CC="gcc"
-export CXX="g++"
-export MPICC="cc"
-export MPICXX="CC"
-export CFLAGS="-O3 -fPIC"
-export CXXFLAGS="-O3 -fPIC"
-export MPI_CPPFLAGS="/opt/cray/mpt/7.4.1/gni/mpich-gnu/5.1/include"
-export MPI_LDFLAGS="/opt/cray/mpt/7.4.1/gni/mpich-gnu/5.1/lib"
-export MPI_CXXLIB="mpichcxx"
-export MPI_LIB="mpich"
-
-blas="-L/opt/intel/composer_xe_2015.1.133/mkl/lib/intel64 -lmkl_rt -fopenmp -lpthread -lm -ldl"
-lapack="-lmkl_lapack95_lp64"
-
-src="/project/projectdirs/desi/software/src/conda"
-jmake="-j 4"
 
 dir=`pwd`
 
@@ -150,13 +165,4 @@ rm -f ${prefix}/lib/*.la
 # this script should be running as user desi!
 
 chgrp -R desi ${prefix}
-chmod -R g+rX,o-rwx ${prefix}
-
-# do final dump of package list and set permissions
-
-prefix="${gcpath}/conda/conda_${pyversion}-${version}"
-conda list --export | grep -v conda > ${prefix}/pkg_list.txt
-
-chgrp -R desi ${prefix}
-chmod -R g+rX,o-rwx ${prefix}
-
+chmod -R g+rX,g-w,o-rwx ${prefix}

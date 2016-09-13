@@ -23,7 +23,7 @@ install to:
 
 3.  Install the conda packages we need:
 
-    $> ./conda_desi_pkgs.sh
+    $> ./conda_desi_pkgs.sh 3.5 20160828
 
 4.  Install the "extra" software we need:
 
