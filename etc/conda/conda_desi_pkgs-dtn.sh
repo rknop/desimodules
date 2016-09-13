@@ -31,3 +31,6 @@ for p in ${pips}; do
     eval ${com}
 done
 
+# compile all pyc files
+python -m compileall -f
+

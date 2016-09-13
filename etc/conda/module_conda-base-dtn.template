@@ -24,4 +24,5 @@ unsetenv PYTHONSTARTUP
 # This is the conda environment location
 prepend-path PATH @PREFIX@/bin
 setenv PYTHONPATH @PREFIX@/lib/python@PYVERSION@/site-packages
+setenv DESI_CONDA @PREFIX@
 

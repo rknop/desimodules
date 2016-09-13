@@ -33,3 +33,6 @@ for p in ${pips}; do
     eval ${com}
 done
 
+# recompile all pyc files
+python -m compileall -f
+

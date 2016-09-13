@@ -143,7 +143,10 @@ rm -f ${prefix}/lib/*.la
 chgrp -R desi ${prefix}
 chmod -R g+rX,o-rwx ${prefix}
 
+# do final dump of package list and set permissions
+
 prefix="${prjpath}/conda_${pyversion}-${version}"
+conda list --export | grep -v conda > ${prefix}/pkg_list.txt
 
 chgrp -R desi ${prefix}
 chmod -R g+rX,o-rwx ${prefix}
