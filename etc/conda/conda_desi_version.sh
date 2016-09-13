@@ -16,7 +16,7 @@ prefixpath=""
 moddir=""
 if [ "x${NERSC_HOST}" = "xdatatran" ]; then
     prefixpath="/project/projectdirs/desi/software/${NERSC_HOST}/conda"
-    moddir="${prefixpath}/modulefiles"
+    moddir="/project/projectdirs/desi/software/modules/datatran"
 else
     prefixpath="/global/common/${NERSC_HOST}/contrib/desi/conda"
     moddir="/global/common/${NERSC_HOST}/contrib/desi/modulefiles"
@@ -47,5 +47,5 @@ cat module_version.template | sed \
 > ${modver}
 
 # this script should be running as user desi!
-chgrp -R desi ${moddir}
-chmod -R g+rX,g-w,o-rwx ${moddir}
+chgrp -R desi ${moddir}/*
+chmod -R g+rX,g-w,o-rwx ${moddir}/*
