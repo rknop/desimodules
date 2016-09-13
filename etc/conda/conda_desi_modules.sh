@@ -67,23 +67,6 @@ cat module_conda-extra.template | sed \
 -e "s#@PYVERSION@#${pyversion}#g" \
 > ${modextrafile}
 
-# set default versions
-
-modver="${moddir}/desi-conda/.version"
-cat module_version.template | sed \
--e "s#@VERSION@#${version}#g" \
-> ${modver}
-
-modver="${moddir}/desi-conda-base/.version"
-cat module_version.template | sed \
--e "s#@VERSION@#${version}#g" \
-> ${modver}
-
-modver="${moddir}/desi-conda-extra/.version"
-cat module_version.template | sed \
--e "s#@VERSION@#${version}#g" \
-> ${modver}
-
 # this script should be running as user desi!
 chgrp -R desi ${moddir}/desi-conda*
 chmod -R g+rX,g-w,o-rwx ${moddir}/desi-conda*
