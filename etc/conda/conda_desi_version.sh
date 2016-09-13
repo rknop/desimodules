@@ -47,5 +47,5 @@ cat module_version.template | sed \
 > ${modver}
 
 # this script should be running as user desi!
-chgrp -R desi ${moddir}/*
-chmod -R g+rX,g-w,o-rwx ${moddir}/*
+chgrp -R desi ${moddir}/desi-conda*/.version
+chmod -R g+rX,g-w,o-rwx ${moddir}/desi-conda*/.version
