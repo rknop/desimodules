@@ -34,24 +34,24 @@ substituting the actual name (e.g. edison, cori) for
 
 3.  Install module files, and then load them:
 
-    $> ./conda_desi_modules.sh 3.5 20160828
-    $> module load desi-conda/3.5-20160828
+        $> ./conda_desi_modules.sh 3.5 20160828
+        $> module load desi-conda/3.5-20160828
 
 4.  Install the conda packages we need:
 
-    $> ./conda_desi_pkgs.sh 3.5 20160828
+        $> ./conda_desi_pkgs.sh 3.5 20160828
 
 5.  Install the "extra" software we need.  We make a build
     directory and do the build from there in order to avoid
     clutter:
 
-    $> mkdir build
-    $> cd build
-    $> ../conda_desi_extra.sh 3.5 20160828
+        $> mkdir build
+        $> cd build
+        $> ../conda_desi_extra.sh 3.5 20160828
 
 6.  (OPTIONAL) Make this version the default:
 
-    $> ./conda_desi_version.sh 3.5 20160828
+        $> ./conda_desi_version.sh 3.5 20160828
 
     DON'T DO THIS UNTIL YOU HAVE TESTED IT WORKS!
 
