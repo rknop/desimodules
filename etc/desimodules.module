@@ -25,7 +25,7 @@ proc ModulesHelp {{ }} {{
 # prevents multiple versions from being loaded simultaneously.  Do not
 # change it.
 #
-set product desimodules
+set product {name}
 set version {version}
 conflict $product
 #
@@ -46,48 +46,26 @@ module-whatis "Sets up $product/$version in your environment."
 # They only exist on edison and cori for now.
 #
 if {{ [info exists env(NERSC_HOST)] }} {{
-    if {{ $env(NERSC_HOST) == "edison" }} {{
-        set checkpre True
-        module load astropy-hpcp/1.2.1_5fc56de5-9.0
-        module load scipy-hpcp/0.17.0_261d2fd3-9.0
-        module load matplotlib-hpcp/1.4.3_8d60f685-9.0
-        module load ipython-hpcp/3.0.0_655a190b-9.0
-        module load yaml-hpcp/a1ed8f02_a1ed8f02-9.0
-        module load fitsio-hpcp/d1fb9f2_c0563e28-9.0
-        module load requests-hpcp/2.8.1_b292912c-9.0
-    }} elseif {{ $env(NERSC_HOST) == "cori" }} {{
-        set checkpre True
-        module load astropy-hpcp/1.2.1_1f2b05e2-4.0
-        module load scipy-hpcp/0.17.0_fc9cd1dc-4.0
-        module load matplotlib-hpcp/1.4.3_f7d8d04a-4.0
-        module load ipython-hpcp/3.0.0_69f8e7b5-4.0
-        module load yaml-hpcp/6c68d4d8_6c68d4d8-4.0
-        module load fitsio-hpcp/d1fb9f2_9aff5bc6-4.0
-        module load requests-hpcp/2.8.1_8c18c9a4-4.0
-    }} else {{
-        set checkpre False
-    }}
-    if {{ $checkpre == "True" }} {{
-        prereq astropy-hpcp
-        prereq scipy-hpcp
-        prereq matplotlib-hpcp
-        prereq ipython-hpcp
-        prereq yaml-hpcp
-        prereq fitsio-hpcp
-        prereq requests-hpcp
-    }}
+    module load desi-conda/3.5-20160913
+    prereq desi-conda
 }}
-
 #
-# DESI specific modules
+# DESI-specific modules
 #
-module load desiutil
+module load desiutil/1.8.0
 prereq desiutil
 
-module load desitree
+module load desitree/0.3.0
 prereq desitree
 
+module load specter/0.6.0
 module load desimodel/0.4.5
+module load specex/0.4.0
+module load desitarget/0.6.1
+module load specsim/v0.5
+module load desisim/0.14.0
+module load redmonster/master
+module load desispec/0.10.0
 
 #
 # ENVIRONMENT SECTION
@@ -98,11 +76,11 @@ module load desimodel/0.4.5
 # will need to set the DESI_PRODUCT_ROOT environment variable
 #
 if {{[info exists env(DESI_PRODUCT_ROOT)]}} {{
-    set PRODUCT_ROOT $env(DESI_PRODUCT_ROOT)
+    set code_root $env(DESI_PRODUCT_ROOT)/code
 }} else {{
-    set PRODUCT_ROOT /project/projectdirs/desi/software/$env(NERSC_HOST)
+    set code_root {product_root}
 }}
-set PRODUCT_DIR $PRODUCT_ROOT/$product/$version
+set PRODUCT_DIR $code_root/$product/$version
 #
 # This line creates an environment variable pointing to the install
 # directory of your product.
@@ -113,9 +91,11 @@ setenv [string toupper $product] $PRODUCT_DIR
 # template product layout.  These will be set or commented as needed by the
 # desiInstall script.
 #
-## prepend-path PATH $PRODUCT_DIR/bin
-## prepend-path PYTHONPATH $PRODUCT_DIR/py
-## prepend-path LD_LIBRARY_PATH $PRODUCT_DIR/lib
+{needs_bin}prepend-path PATH $PRODUCT_DIR/bin
+{needs_python}prepend-path PYTHONPATH $PRODUCT_DIR/lib/{pyversion}/site-packages
+{needs_trunk_py}prepend-path PYTHONPATH $PRODUCT_DIR{trunk_py_dir}
+{needs_ld_lib}prepend-path LD_LIBRARY_PATH $PRODUCT_DIR/lib
+{needs_idl}prepend-path IDL_PATH +$PRODUCT_DIR/pro
 #
 # Add any non-standard Module code below this point.
 #

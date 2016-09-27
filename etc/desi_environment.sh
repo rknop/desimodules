@@ -6,20 +6,16 @@
 #
 if [[ $(basename ${SHELL}) == "bash" || $(basename ${SHELL}) == "sh" ]]; then
     if [[ "${NERSC_HOST}" == "edison" || "${NERSC_HOST}" == "cori" ]]; then
-        source /project/projectdirs/cmb/modules/hpcports_NERSC.sh
-        hpcports gnu
+        module use /global/common/${NERSC_HOST}/contrib/desi/modulefiles
+    elif [[ "${NERSC_HOST}" == "datatran" || "${NERSC_HOST}" == "scigate" ]]; then
+        module use /global/project/projectdirs/desi/software/${NERSC_HOST}/modulefiles
     else
-        echo "HPCPorts is not supported on ${NERSC_HOST}!"
+        echo "DESI+Anaconda environment is not supported on ${NERSC_HOST}!"
     fi
-    if [[ -d /project/projectdirs/desi/software/modules/${NERSC_HOST} ]]; then
-        module use /project/projectdirs/desi/software/modules/${NERSC_HOST}
-        if [[ $# > 0 ]]; then
-            module load desimodules/$1
-        else
-            module load desimodules
-        fi
+    if [[ $# > 0 ]]; then
+        module load desimodules/$1
     else
-        echo "Could not find DESI modules for ${NERSC_HOST}!"
+        module load desimodules
     fi
 else
     echo "You are not sourcing the correct file for your shell!"

@@ -23,11 +23,9 @@ MAKEFLAGS = w
 #
 SUBDIRS =
 #
-# This is a list of directories that make should copy to $INSTALL_DIR.
-# If a Makefile is present in these directories, 'make install' will be
-# called on them.  Otherwise it will just be a plain copy.
+# Directory that will contain the shell scripts that "boot" the DESI environment.
 #
-INSTALLDIRS =
+SOFTWARE = /global/project/projectdirs/desi/software
 #
 # This is a message to make that these targets are 'actions' not files.
 #
@@ -42,9 +40,8 @@ all :
 # 'all' is a dependency of 'install'.
 #
 install : all
-	@ if test -d /project/projectdirs/desi/software/modules; then \
-		/bin/cp -v -f $(WORKING_DIR)/etc/desi_environment.* \
-		/project/projectdirs/desi/software/modules; fi
+	@ if test -d $(SOFTWARE); then \
+		/bin/cp -v -f $(WORKING_DIR)/etc/desi_environment.* $(SOFTWARE); fi
 #
 # GNU make pre-defines $(RM).  The - in front of $(RM) causes make to
 # ignore any errors produced by $(RM).
