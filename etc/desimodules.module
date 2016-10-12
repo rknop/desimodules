@@ -52,7 +52,7 @@ if {{ [info exists env(NERSC_HOST)] }} {{
 #
 # DESI-specific modules
 #
-module load desiutil/1.8.0
+module load desiutil/1.9.0
 prereq desiutil
 
 module load desitree/0.3.0
@@ -61,7 +61,7 @@ prereq desitree
 module load specter/0.6.0
 module load desimodel/0.4.5
 module load specex/0.4.0
-module load desitarget/0.6.1
+module load desitarget/0.7.0
 module load specsim/v0.5
 module load desisim/0.14.0
 module load redmonster/master
