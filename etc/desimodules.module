@@ -42,36 +42,7 @@ module-whatis "Sets up $product/$version in your environment."
 # A mandatory dependency is a module load command followed by a prereq
 # command.  An optional dependency is not followed by a prereq statement.
 #
-# These are the external products that we need for most DESI work
-# They only exist on edison and cori for now.
-#
-if {{ [info exists env(NERSC_HOST)] }} {{
-    module load desiconda/20170613-1.1.4-spectro
-    prereq desiconda
-}}
-#
-# DESI-specific modules
-#
-module load desiutil/1.9.5
-prereq desiutil
-
-module load desitree/0.3.0
-prereq desitree
-
-module load specter/0.7.0
-module load desimodel/0.7.0
-module load specex/v0.4.3
-module load desitarget/0.13.0
-module load specsim/v0.9
-module load desispec/0.15.1
-module load desisim/0.19.0
-module load fiberassign/0.5.0
-module load desisurvey/0.8.1
-module load surveysim/0.7.0
-
-module load redrock/0.4.1
-# module load redmonster/v1.2.0
-
+# NO DEPENDENCIES
 #
 # ENVIRONMENT SECTION
 #
@@ -104,3 +75,35 @@ setenv [string toupper $product] $PRODUCT_DIR
 #
 # Add any non-standard Module code below this point.
 #
+# These are the external products that we need for most DESI work.
+# Need to make sure these can work on datatran, etc., not just edison and cori.
+#
+if {{ [info exists env(NERSC_HOST)] }} {{
+    set desiconda_version 20170613-1.1.4-spectro
+    set desiconda_modules_root [string map {/code /modulefiles} $code_root]
+    module use $desiconda_modules_root
+    module load desiconda/$desiconda_version
+    prereq desiconda
+}}
+#
+# DESI-specific modules
+#
+module load desiutil/1.9.5
+prereq desiutil
+
+module load desitree/0.3.0
+prereq desitree
+
+module load specter/0.7.0
+module load desimodel/0.7.0
+module load specex/v0.4.3
+module load desitarget/0.13.0
+module load specsim/v0.9
+module load desispec/0.15.1
+module load desisim/0.19.0
+module load fiberassign/0.5.0
+module load desisurvey/0.8.1
+module load surveysim/0.7.0
+
+module load redrock/0.4.1
+# module load redmonster/v1.2.0
