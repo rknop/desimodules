@@ -80,7 +80,7 @@ setenv [string toupper $product] $PRODUCT_DIR
 #
 if {{ [info exists env(NERSC_HOST)] }} {{
     set desiconda_version 20170613-1.1.4-spectro
-    set desiconda_modules_root [string map {/code /modulefiles} $code_root]
+    set desiconda_modules_root [string map {{/code /modulefiles}} $code_root]
     module use $desiconda_modules_root
     module load desiconda/$desiconda_version
     prereq desiconda
