@@ -2,8 +2,17 @@
 desimodules
 ===========
 
-This package provides a meta-module that can be used to load a default
-set of DESI modules.
+This package provides a set of meta-modules that can be used to load a default
+set of DESI modules.  In addition there are a few shell scripts that are
+useful for setting up these meta-modules:
+
+``desi_environment.sh``
+    Provides an easy way to set up the DESI environment on login.
+
+``activate_desi_jupyter.sh``
+    Used to set up the DESI environment within Jupyter notebooks.
+
+There are equivalent scripts for tcsh.
 
 This package is specifically designed to be a valid Modules directory on
 its own.  To install this package, all that is required is::
@@ -21,4 +30,5 @@ In preparation for a software release:
 3. When the tests pass, copy ``test-release`` to a new file, *e.g.* ``18.3``,
    and edit the version information.
 4. Add the new file.
-5. Tag this package with the name of the new file.
+5. Check the ``.version`` and ``master`` files for consistency.
+6. Tag this package with the name of the new file.
