@@ -78,9 +78,13 @@ setenv [string toupper $product] $PRODUCT_DIR
 # These are the external products that we need for most DESI work.
 # Need to make sure these can work on datatran, etc., not just edison and cori.
 #
-module use /global/common/$env(NERSC_HOST)/contrib/desi/desiconda/current/modulefiles
-module load desiconda
-prereq desiconda
+if { [info exists env(NERSC_HOST)] } {
+    set desiconda_version current
+    set desiconda_modules_root [string map {/code /modulefiles} $code_root]
+    module use $desiconda_modules_root
+    module load desiconda
+    prereq desiconda
+}
 #
 # DESI-specific modules
 #
@@ -90,19 +94,18 @@ prereq desiutil
 module load desitree/0.3.0
 prereq desitree
 
-#- Master versions of most modules
+# Master versions of most modules:
 module load specter/master
 module load desimodel/master
+# specex: stable, slow to compile, not updated daily, so use a tag.
+module load specex/0.5.0
 module load desitarget/master
 module load specsim/master
 module load desispec/master
 module load simqso/master
 module load desisim/master
+module load fiberassign/master
 module load desisurvey/master
 module load surveysim/master
 module load redrock/master
-module load fiberassign/master
-module load redrock-templates/0.4
-
-#- specex: stable, slow to compile, not updated daily, so use a tag
-module load specex/0.5.0
+module load redrock-templates/master

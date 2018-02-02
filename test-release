@@ -54,7 +54,7 @@ module-whatis "Sets up $product/$version in your environment."
 if {[info exists env(DESI_PRODUCT_ROOT)]} {
     set code_root $env(DESI_PRODUCT_ROOT)/code
 } else {
-    set code_root /global/common/edison/contrib/desi/desiconda/20170613-1.1.4-spectro/code
+    set code_root /global/common/$env(NERSC_HOST)/contrib/desi/desiconda/20170613-1.1.4-spectro/code
 }
 set PRODUCT_DIR $code_root/$product/$version
 #
@@ -75,8 +75,8 @@ setenv [string toupper $product] $PRODUCT_DIR
 #
 # Add any non-standard Module code below this point.
 #
-# These are the external products that we need for most DESI work
-# They only exist on edison and cori for now.
+# These are the external products that we need for most DESI work.
+# Need to make sure these can work on datatran, etc., not just edison and cori.
 #
 if { [info exists env(NERSC_HOST)] } {
     set desiconda_version 20170613-1.1.4-spectro
