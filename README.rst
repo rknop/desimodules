@@ -23,6 +23,10 @@ its own.  To install this package, all that is required is::
 and the modules defined here will appear, assuming the ``modulefiles`` directory
 has been added with a ``module use`` command.
 
+Valid Module files begin with the characters ``#%Module1.0``.  Files that
+do *not* begin with these characters are ignored by the Modules system.
+This allows us to freely mix Module files with non-Module files.
+
 In preparation for a software release:
 
 1. Edit the ``test-release`` with the desired versions.
