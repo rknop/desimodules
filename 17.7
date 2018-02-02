@@ -14,10 +14,10 @@
 # the second line if needed, but most products should
 # leave this alone.
 #
-proc ModulesHelp {{ }} {{
+proc ModulesHelp { } {
     global product version
     puts stderr "This module adds $product/$version to your environment."
-}}
+}
 #
 # These variables are used below.  The product variable should be set to
 # the name of the product and never changed.  The version variable will
@@ -25,8 +25,8 @@ proc ModulesHelp {{ }} {{
 # prevents multiple versions from being loaded simultaneously.  Do not
 # change it.
 #
-set product {name}
-set version {version}
+set product desimodules
+set version 17.7
 conflict $product
 #
 # The line below is another part of the Modules help system.  You can
@@ -51,11 +51,11 @@ module-whatis "Sets up $product/$version in your environment."
 # If you are not working at NERSC, but still want to use Modules, you
 # will need to set the DESI_PRODUCT_ROOT environment variable
 #
-if {{[info exists env(DESI_PRODUCT_ROOT)]}} {{
+if {[info exists env(DESI_PRODUCT_ROOT)]} {
     set code_root $env(DESI_PRODUCT_ROOT)/code
-}} else {{
-    set code_root {product_root}
-}}
+} else {
+    set code_root /global/common/edison/contrib/desi/desiconda/20170613-1.1.4-spectro/code
+}
 set PRODUCT_DIR $code_root/$product/$version
 #
 # This line creates an environment variable pointing to the install
@@ -67,42 +67,42 @@ setenv [string toupper $product] $PRODUCT_DIR
 # template product layout.  These will be set or commented as needed by the
 # desiInstall script.
 #
-{needs_bin}prepend-path PATH $PRODUCT_DIR/bin
-{needs_python}prepend-path PYTHONPATH $PRODUCT_DIR/lib/{pyversion}/site-packages
-{needs_trunk_py}prepend-path PYTHONPATH $PRODUCT_DIR{trunk_py_dir}
-{needs_ld_lib}prepend-path LD_LIBRARY_PATH $PRODUCT_DIR/lib
-{needs_idl}prepend-path IDL_PATH +$PRODUCT_DIR/pro
+# prepend-path PATH $PRODUCT_DIR/bin
+# prepend-path PYTHONPATH $PRODUCT_DIR/lib/python3.5/site-packages
+# prepend-path PYTHONPATH $PRODUCT_DIR/py
+# prepend-path LD_LIBRARY_PATH $PRODUCT_DIR/lib
+# prepend-path IDL_PATH +$PRODUCT_DIR/pro
 #
 # Add any non-standard Module code below this point.
 #
 # These are the external products that we need for most DESI work.
 # Need to make sure these can work on datatran, etc., not just edison and cori.
 #
-if {{ [info exists env(NERSC_HOST)] }} {{
+if { [info exists env(NERSC_HOST)] } {
     set desiconda_version 20170613-1.1.4-spectro
-    set desiconda_modules_root [string map {{/code /modulefiles}} $code_root]
+    set desiconda_modules_root [string map {/code /modulefiles} $code_root]
     module use $desiconda_modules_root
     module load desiconda/$desiconda_version
     prereq desiconda
-}}
+}
 #
 # DESI-specific modules
 #
-module load desiutil/1.9.9
+module load desiutil/1.9.6
 prereq desiutil
 
 module load desitree/0.3.0
 prereq desitree
 
-module load specter/0.8.2
-module load desimodel/0.9.1
-module load specex/0.6.0
-module load desitarget/0.17.1
-module load specsim/v0.11
-module load desispec/0.17.1
-module load desisim/0.24.0
-module load fiberassign/0.6.0
-module load desisurvey/0.10.1
-module load surveysim/0.9.0
-module load redrock/0.8.0
-module load redrock-templates/0.4
+module load specter/0.7.0
+module load desimodel/0.7.0
+module load specex/v0.4.3
+module load desitarget/0.14.0
+module load specsim/v0.9
+module load desispec/0.15.2
+module load desisim/0.20.0
+module load fiberassign/0.5.0
+module load desisurvey/0.8.2
+module load surveysim/0.7.0
+
+module load redrock/0.4.1
