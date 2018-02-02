@@ -2,12 +2,6 @@
 # The first line of this file tells Modules that this is a module file.
 # DO NOT ALTER IT!
 #
-# ABOUT THIS FILE
-#
-# This file is designed to be processed by Python.  Specifically, this file
-# will be read into a string, and the .format() method will be applied to it.
-# This file is not a valid module file on its own.
-#
 # METADATA AND DOCUMENTATION SECTION
 #
 # This function is part of the Modules help system.  You can modify
