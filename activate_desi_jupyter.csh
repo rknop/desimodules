@@ -19,8 +19,5 @@
 set version = $1
 set connection_file = $2
 
-# module use /global/common/${NERSC_HOST}/contrib/desi/modulefiles/
-# module load desimodules/$version
 source /project/projectdirs/desi/software/desi_environment.csh $version
 exec python -m ipykernel -f $connection_file
-
