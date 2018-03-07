@@ -7,10 +7,16 @@ set of DESI modules.  In addition there are a few shell scripts that are
 useful for setting up these meta-modules:
 
 ``desi_environment.sh``
-    Provides an easy way to set up the DESI environment on login.
+    Provides an easy way to set up the DESI environment on login.  This
+    script is meant to be *sourced* inside an existing shell, not executed.
+    For example::
+
+        source /global/project/projectdirs/desi/software/desi_environment.sh 18.3
 
 ``activate_desi_jupyter.sh``
-    Used to set up the DESI environment within Jupyter notebooks.
+    Used to set up the DESI environment within Jupyter notebooks.  This
+    script is meant to be *executed* by the NERSC Jupyter notebook system,
+    so it explicitly has executable bits set.
 
 There are equivalent scripts for tcsh.
 
