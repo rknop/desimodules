@@ -92,14 +92,14 @@ prereq desitree
 module load specter/master
 module load desimodel/master
 # specex: stable, slow to compile, not updated daily, so use a tag.
-module load specex/0.5.0
+module load specex/0.6.0
 module load desitarget/master
 module load specsim/master
 module load desispec/master
-module load simqso/master
 module load desisim/master
 module load fiberassign/master
 module load desisurvey/master
 module load surveysim/master
 module load redrock/master
 module load redrock-templates/master
+module load simqso/master
