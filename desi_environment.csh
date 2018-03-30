@@ -4,32 +4,32 @@
 #
 if ( `basename ${SHELL}` == "csh" || `basename ${SHELL}` == "tcsh" ) then
     if ( $# > 0 ) then
-        set release = "/$1"
+        set _desi_release = "/$1"
     else
-        set release = ''
+        set _desi_release = ''
     endif
-    switch ( ${release} )
+    switch ( ${_desi_release} )
         case "/17.*":
         case '/18.1':
-            set startup = /global/common/${NERSC_HOST}/contrib/desi/desiconda/startup/modulefiles
+            set _desi_startup = /global/common/${NERSC_HOST}/contrib/desi/desiconda/startup/modulefiles
             if ( "${NERSC_HOST}" == "datatran" ) then
-                set startup = /global/project/projectdirs/desi/software/${NERSC_HOST}/desiconda/startup/modulefiles
+                set _desi_startup = /global/project/projectdirs/desi/software/${NERSC_HOST}/desiconda/startup/modulefiles
             endif
             breaksw
         default:
-            set startup = /global/common/software/desi/${NERSC_HOST}/desiconda/startup/modulefiles
+            set _desi_startup = /global/common/software/desi/${NERSC_HOST}/desiconda/startup/modulefiles
             breaksw
     endsw
     if ( "${NERSC_HOST}" == "edison" || \
          "${NERSC_HOST}" == "cori" || \
          "${NERSC_HOST}" == "datatran" ) then
-        module use ${startup}
-        module load desimodules${release}
+        module use ${_desi_startup}
+        module load desimodules${_desi_release}
     else
         echo "DESI+Anaconda environment is not supported on ${NERSC_HOST}!"
     endif
-    unset startup
-    unset release
+    unset _desi_startup
+    unset _desi_release
 else
     echo "You are not sourcing the correct file for your shell!"
 endif
