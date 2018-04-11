@@ -22,6 +22,7 @@ proc ModulesHelp { } {
 set product desimodules
 set version master
 conflict $product
+set desiconda_version 20180130-1.2.4-spec
 #
 # The line below is another part of the Modules help system.  You can
 # modify the part in quotes if you really need to, but most products should
@@ -48,7 +49,7 @@ module-whatis "Sets up $product/$version in your environment."
 if {[info exists env(DESI_PRODUCT_ROOT)]} {
     set code_root $env(DESI_PRODUCT_ROOT)/code
 } else {
-    set code_root /global/common/$env(NERSC_HOST)/contrib/desi/desiconda/current/code
+    set code_root /global/common/software/desi/$env(NERSC_HOST)/desiconda/$desiconda_version/code
 }
 set PRODUCT_DIR $code_root/$product/$version
 #
@@ -73,10 +74,9 @@ setenv [string toupper $product] $PRODUCT_DIR
 # Need to make sure these can work on datatran, etc., not just edison and cori.
 #
 if { [info exists env(NERSC_HOST)] } {
-    set desiconda_version current
     set desiconda_modules_root [string map {/code /modulefiles} $code_root]
     module use $desiconda_modules_root
-    module load desiconda
+    module load desiconda/$desiconda_version
     prereq desiconda
 }
 #
