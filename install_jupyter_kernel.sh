@@ -46,6 +46,43 @@ if [ ! -f ${DESIMODULES}/${release} ]; then
     echo "Release ${release} does not appear to exist!" >&2
     exit 1
 fi
-[ "${verbose}" = "True" ] && echo mkdir -p ${HOME}/.local/share/jupyter/kernels
-# mkdir -p ${HOME}/.local/share/jupyter/kernels
-echo $SHELL
+#
+# Set up kernel directory.
+#
+kernelDir=${HOME}/.local/share/jupyter/kernels/desi-${release}
+if [ -d ${kernelDir} ]; then
+    echo "Release ${release} is already installed in ${kernelDir}, aborting." >&2
+    exit 1
+fi
+[ "${verbose}" = "True" ] && echo mkdir -p ${kernelDir}
+mkdir -p ${kernelDir}
+#
+# Check $SHELL.
+#
+b=$(basename ${SHELL})
+if [ "${b}" = "csh" -o "${b}" = "tcsh" ]; then
+    suffix=csh
+else
+    suffix=sh
+fi
+[ "${verbose}" = "True" ] && echo "suffix=${suffix}"
+#
+# Create kernel.json file.
+#
+cat > ${kernelDir}/kernel.json <<EndOfKernel
+{
+ "language": "python",
+ "argv": [
+  "/project/projectdirs/desi/software/activate_desi_jupyter.${suffix}",
+  "${release}",
+  "{connection_file}"
+ ],
+ "display_name": "DESI ${release}"
+}
+EndOfKernel
+[ "${verbose}" = "True" ] && cat ${kernelDir}/kernel.json
+#
+# Copy logo files.
+#
+[ "${verbose}" = "True" ] && echo "cp ${DESIMODULES}/*.png ${kernelDir}"
+cp ${DESIMODULES}/*.png ${kernelDir}
