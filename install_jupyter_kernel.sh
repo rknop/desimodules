@@ -84,5 +84,5 @@ EndOfKernel
 #
 # Copy logo files.
 #
-[ "${verbose}" = "True" ] && echo "cp ${DESIMODULES}/*.png ${kernelDir}"
-cp ${DESIMODULES}/*.png ${kernelDir}
+# [ "${verbose}" = "True" ] && echo "cp ${DESIMODULES}/*.png ${kernelDir}"
+# cp ${DESIMODULES}/*.png ${kernelDir}
