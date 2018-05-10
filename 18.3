@@ -51,7 +51,8 @@ if {[info exists env(DESI_PRODUCT_ROOT)]} {
 } else {
     set code_root /global/common/software/desi/$env(NERSC_HOST)/desiconda/$desiconda_version/code
 }
-set PRODUCT_DIR $code_root/$product/$version
+# set PRODUCT_DIR $code_root/$product/$version
+set PRODUCT_DIR /global/common/software/desi/$env(NERSC_HOST)/desiconda/startup/modulefiles/$product
 #
 # This line creates an environment variable pointing to the install
 # directory of your product.
