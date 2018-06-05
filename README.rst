@@ -20,6 +20,20 @@ useful for setting up these meta-modules:
 
 There are equivalent scripts for tcsh.
 
+The script ``install_juypter_kernel.sh`` allows users to install Jupyter notebook
+kernels in their home directories that are loaded with a particular
+desimodules release.  To install a particular desimodules release, just do::
+
+    install_jupyter_kernel.sh 18.3
+
+to install release 18.3.
+
+To obtain the version of desimodules programmatically, just use the value
+of the environment variable ``DESIMODULES_VERSION``.  You can also reconstruct
+the full path to a desimodules Module file with::
+
+    $DESIMODULES/$DESIMODULES_VERSION
+
 This package is specifically designed to be a valid Modules directory on
 its own.  To install this package, all that is required is::
 

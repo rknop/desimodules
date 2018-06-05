@@ -58,6 +58,7 @@ set PRODUCT_DIR /global/common/software/desi/$env(NERSC_HOST)/desiconda/startup/
 # directory of your product.
 #
 setenv [string toupper $product] $PRODUCT_DIR
+setenv [string toupper $product]_VERSION $version
 #
 # The lines below set various other environment variables.  They assume the
 # template product layout.  These will be set or commented as needed by the
