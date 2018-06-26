@@ -22,7 +22,7 @@ proc ModulesHelp { } {
 set product desimodules
 set version test-release
 conflict $product
-set desiconda_version 20180130-1.2.4-spec
+set desiconda_version 20180518-1.2.5-spec
 #
 # The line below is another part of the Modules help system.  You can
 # modify the part in quotes if you really need to, but most products should
@@ -84,7 +84,7 @@ if { [info exists env(NERSC_HOST)] } {
 #
 # DESI-specific modules
 #
-module load desiutil/1.9.10
+module load desiutil/1.9.11
 prereq desiutil
 
 module load desitree/0.3.0
