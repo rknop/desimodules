@@ -109,3 +109,4 @@ module load redrock/master
 module load redrock-templates/master
 # module load redrock-templates/0.7
 module load simqso/v1.2.2
+module load dust/v0_1
