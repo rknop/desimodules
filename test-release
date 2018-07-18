@@ -22,7 +22,7 @@ proc ModulesHelp { } {
 set product desimodules
 set version test-release
 conflict $product
-set desiconda_version 20180518-1.2.5-spec
+set desiconda_version 20180709-1.2.6-spec
 #
 # The line below is another part of the Modules help system.  You can
 # modify the part in quotes if you really need to, but most products should
