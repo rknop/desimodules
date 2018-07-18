@@ -91,22 +91,16 @@ module load desitree/0.3.0
 prereq desitree
 
 module load specter/0.8.6
-module load desimodel/0.9.5
+module load desimodel/0.9.6
 module load specex/0.6.1
-module load desitarget/master
-# module load desitarget/0.21.0
+module load desitarget/0.21.0
 module load specsim/v0.11.1
-module load desispec/master
-# module load desispec/0.22.0
-module load desisim/master
-# module load desisim/0.28.0
-module load fiberassign/master
-# module load fiberassign/0.8.2
+module load desispec/0.22.1
+module load desisim/0.28.0
+module load fiberassign/0.9.0
 module load desisurvey/0.10.2
 module load surveysim/0.9.1
-module load redrock/master
-# module load redrock/0.12.0
-module load redrock-templates/master
-# module load redrock-templates/0.7
+module load redrock/0.12.0
+module load redrock-templates/0.6
 module load simqso/v1.2.2
 module load dust/v0_1
