@@ -97,8 +97,8 @@ module load specex/0.6.3
 module load specsim/v0.13
 # module load desispec/0.28.0
 # module load desisim/0.31.2
-# module load fiberassign/1.0.0
-# module load desisurvey/0.11.1
+module load fiberassign/1.1.0
+module load desisurvey/0.12.0
 module load surveysim/0.11.0
 # module load redrock/0.14.0
 module load redrock-templates/0.7
