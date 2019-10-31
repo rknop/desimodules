@@ -94,7 +94,7 @@ prereq desitree
 module load specter/master
 module load desimodel/master
 # specex: stable, slow to compile, not updated daily, so use a tag.
-module load specex/0.6.3
+module load specex/0.6.4
 module load desitarget/master
 module load specsim/master
 module load desispec/master
