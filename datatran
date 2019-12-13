@@ -22,7 +22,7 @@ proc ModulesHelp { } {
 set product desimodules
 set version master
 conflict $product
-set desiconda_version 20190804-1.3.0-spec
+set desiconda_version 20180102-1.2.2
 #
 # The line below is another part of the Modules help system.  You can
 # modify the part in quotes if you really need to, but most products should
@@ -84,25 +84,25 @@ if { [info exists env(NERSC_HOST)] } {
 #
 # DESI-specific modules
 #
-module load desiutil/master
+module load desiutil/2.0.1
 prereq desiutil
 
 module load desitree/0.4.0
 prereq desitree
 
 # Master versions of most modules:
-module load specter/master
-module load desimodel/master
+# module load specter/master
+# module load desimodel/master
 # specex: stable, slow to compile, not updated daily, so use a tag.
-module load specex/0.6.4
-module load desitarget/master
-module load specsim/master
-module load desispec/master
-module load desisim/master
-module load fiberassign/master
-module load desisurvey/master
-module load surveysim/master
-module load redrock/master
-module load redrock-templates/master
-module load simqso/master
-module load dust/v0_1
+# module load specex/0.6.4
+# module load desitarget/master
+# module load specsim/master
+# module load desispec/master
+# module load desisim/master
+# module load fiberassign/master
+# module load desisurvey/master
+# module load surveysim/master
+# module load redrock/master
+# module load redrock-templates/master
+# module load simqso/master
+# module load dust/v0_1
