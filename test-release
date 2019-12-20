@@ -93,7 +93,7 @@ prereq desitree
 module load specter/0.9.1
 module load desimodel/0.10.3
 module load specex/0.6.5
-# module load desitarget/0.33.3
+module load desitarget/0.35.2
 module load specsim/v0.13
 # module load desispec/0.31.0
 # module load desisim/0.34.0
