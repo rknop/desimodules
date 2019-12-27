@@ -95,8 +95,8 @@ module load desimodel/0.10.3
 module load specex/0.6.5
 module load desitarget/0.35.2
 module load specsim/v0.13
-module load desispec/0.32.0
-module load desisim/0.34.1
+module load desispec/0.32.1
+module load desisim/0.34.2
 module load fiberassign/1.3.0
 module load desisurvey/0.12.1
 module load surveysim/0.11.0
