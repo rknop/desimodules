@@ -30,15 +30,6 @@ set desiconda_version 20190804-1.3.0-spec
 #
 module-whatis "Sets up $product/$version in your environment."
 #
-# DEPENDENCIES SECTION
-#
-# If your product requires other software to function, that should be declared
-# here.  There are two types of dependencies: mandatory and optional.
-# A mandatory dependency is a module load command followed by a prereq
-# command.  An optional dependency is not followed by a prereq statement.
-#
-# NO DEPENDENCIES
-#
 # ENVIRONMENT SECTION
 #
 # The PRODUCT_ROOT and PRODUCT_DIR variables are used to set other
@@ -51,7 +42,6 @@ if {[info exists env(DESI_PRODUCT_ROOT)]} {
 } else {
     set code_root /global/common/software/desi/$env(NERSC_HOST)/desiconda/$desiconda_version/code
 }
-# set PRODUCT_DIR $code_root/$product/$version
 set PRODUCT_DIR /global/common/software/desi/$env(NERSC_HOST)/desiconda/startup/modulefiles/$product
 #
 # This line creates an environment variable pointing to the install
@@ -60,20 +50,9 @@ set PRODUCT_DIR /global/common/software/desi/$env(NERSC_HOST)/desiconda/startup/
 setenv [string toupper $product] $PRODUCT_DIR
 setenv [string toupper $product]_VERSION $version
 #
-# The lines below set various other environment variables.  They assume the
-# template product layout.  These will be set or commented as needed by the
-# desiInstall script.
-#
-# prepend-path PATH $PRODUCT_DIR/bin
-# prepend-path PYTHONPATH $PRODUCT_DIR/lib/python3.5/site-packages
-# prepend-path PYTHONPATH $PRODUCT_DIR/py
-# prepend-path LD_LIBRARY_PATH $PRODUCT_DIR/lib
-# prepend-path IDL_PATH +$PRODUCT_DIR/pro
-#
-# Add any non-standard Module code below this point.
-#
-# These are the external products that we need for most DESI work.
-# Need to make sure these can work on datatran, etc., not just edison and cori.
+# desiconda contains the external products that we need for most DESI work.
+# The value of $desiconda_version, defined above, may change depending
+# on system, e.g. cori v. datatran.
 #
 if { [info exists env(NERSC_HOST)] } {
     set desiconda_modules_root [string map {/code /modulefiles} $code_root]
