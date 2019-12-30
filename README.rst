@@ -11,7 +11,7 @@ useful for setting up these meta-modules:
     script is meant to be *sourced* inside an existing shell, not executed.
     For example::
 
-        source /global/project/projectdirs/desi/software/desi_environment.sh 18.3
+        source /global/project/projectdirs/desi/software/desi_environment.sh 19.12
 
 ``activate_desi_jupyter.sh``
     Used to set up the DESI environment within Jupyter notebooks.  This
@@ -24,9 +24,9 @@ The script ``install_juypter_kernel.sh`` allows users to install Jupyter noteboo
 kernels in their home directories that are loaded with a particular
 desimodules release.  To install a particular desimodules release, just do::
 
-    install_jupyter_kernel.sh 18.3
+    install_jupyter_kernel.sh 19.12
 
-to install release 18.3.
+to install release 19.12.
 
 To obtain the version of desimodules programmatically, just use the value
 of the environment variable ``DESIMODULES_VERSION``.  You can also reconstruct
@@ -51,7 +51,7 @@ In preparation for a software release:
 
 1. Edit the ``test-release`` with the desired versions.
 2. Load the ``test-release`` environment and run tests.
-3. When the tests pass, copy ``test-release`` to a new file, *e.g.* ``18.3``,
+3. When the tests pass, copy ``test-release`` to a new file, *e.g.* ``19.12``,
    and edit the version information.
 4. Add the new file.
 5. Check the ``.version`` and ``master`` files for consistency.
