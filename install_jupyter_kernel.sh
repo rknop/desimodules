@@ -73,7 +73,7 @@ cat > ${kernelDir}/kernel.json <<EndOfKernel
 {
  "language": "python",
  "argv": [
-  "/project/projectdirs/desi/software/activate_desi_jupyter.${suffix}",
+  "/global/common/software/desi/activate_desi_jupyter.${suffix}",
   "${release}",
   "{connection_file}"
  ],
