@@ -11,7 +11,7 @@ useful for setting up these meta-modules:
     script is meant to be *sourced* inside an existing shell, not executed.
     For example::
 
-        source /global/project/projectdirs/desi/software/desi_environment.sh 19.12
+        source /global/common/software/desi/desi_environment.sh 19.12
 
 ``activate_desi_jupyter.sh``
     Used to set up the DESI environment within Jupyter notebooks.  This

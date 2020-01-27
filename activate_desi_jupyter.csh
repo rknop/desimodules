@@ -9,7 +9,7 @@
 # {
 # "language": "python",
 # "argv": [
-#   "/project/projectdirs/desi/software/activate_desi_jupyter.csh",
+#   "/global/common/software/desi/activate_desi_jupyter.csh",
 #   "17.6",
 #   "{connection_file}"
 #   ],
@@ -19,5 +19,5 @@
 set version = $1
 set connection_file = $2
 
-source /project/projectdirs/desi/software/desi_environment.csh $version
-exec python -m ipykernel -f $connection_file
+source /global/common/software/desi/desi_environment.csh ${version}
+exec python -m ipykernel -f ${connection_file}
