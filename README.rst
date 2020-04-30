@@ -49,10 +49,12 @@ This allows us to freely mix Module files with non-Module files.
 
 In preparation for a software release:
 
-1. Edit the ``test-release`` with the desired versions.
+1. Create (but do not check in) a ``test-release`` file with the desired versions.
+   You can call this file *e.g.* ``test-19.12`` if you need a more specific
+   release candidate to refer to.
 2. Load the ``test-release`` environment and run tests.
 3. When the tests pass, copy ``test-release`` to a new file, *e.g.* ``19.12``,
    and edit the version information.
 4. Add the new file.
 5. Check the ``.version`` and ``master`` files for consistency.
-6. Tag this package with the name of the new file.
+6. Merge any PR and tag this package with the name of the new file.
