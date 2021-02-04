@@ -87,3 +87,4 @@ module load prospect/master
 module load desimeter/master
 module load simqso/master
 module load dust/v0_1
+module load speclite/0.13
