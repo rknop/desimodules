@@ -20,9 +20,10 @@ proc ModulesHelp { } {
 # change it.
 #
 set product desimodules
-set version current
+set version 21.2
 conflict $product
 set desiconda_version 20200801-1.4.0-spec
+ 
 #
 # The line below is another part of the Modules help system.  You can
 # modify the part in quotes if you really need to, but most products should
@@ -63,28 +64,27 @@ if { [info exists env(NERSC_HOST)] } {
 #
 # DESI-specific modules
 #
-module load desiutil/master
+module load desiutil/3.1.2
 prereq desiutil
 
 module load desitree/0.5.0
 prereq desitree
 
-# Master versions of most modules:
-module load specter/master
-module load desimodel/master
-# specex: isn't auto-updated every night
+module load specter/0.10.0
+module load desimodel/0.14.0
 module load specex/0.7.0
-module load desitarget/master
-module load specsim/master
-module load desispec/master
-module load desisim/master
-module load fiberassign/master
-module load desisurvey/master
-module load surveysim/master
-module load redrock/master
-module load redrock-templates/master
-module load prospect/master
-module load desimeter/master
-module load simqso/master
+module load desitarget/0.50.0
+module load specsim/v0.14
+module load desispec/0.39.3
+module load desisim/0.35.5
+module load fiberassign/2.1.1
+module load desisurvey/0.15.0
+module load surveysim/0.12.1
+module load redrock/0.14.5
+module load redrock-templates/0.7.2
+module load simqso/v1.2.4
 module load dust/v0_1
+module load desimeter/0.6.3
+module load prospect/1.1.0
 module load speclite/0.13
+
