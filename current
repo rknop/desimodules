@@ -88,5 +88,6 @@ module load desimeter/master
 module load simqso/master
 module load dust/v0_1
 module load speclite/0.13
+module load QuasarNP/0.1.2
 
 setenv DESI_SURVEYOPS $env(DESI_ROOT)/survey/ops/surveyops/trunk
