@@ -20,7 +20,7 @@ proc ModulesHelp { } {
 # change it.
 #
 set product desimodules
-set version master
+set version datatran
 conflict $product
 set desiconda_version 20180102-1.2.2
 #
@@ -29,15 +29,6 @@ set desiconda_version 20180102-1.2.2
 # leave this alone.
 #
 module-whatis "Sets up $product/$version in your environment."
-#
-# DEPENDENCIES SECTION
-#
-# If your product requires other software to function, that should be declared
-# here.  There are two types of dependencies: mandatory and optional.
-# A mandatory dependency is a module load command followed by a prereq
-# command.  An optional dependency is not followed by a prereq statement.
-#
-# NO DEPENDENCIES
 #
 # ENVIRONMENT SECTION
 #
@@ -51,7 +42,6 @@ if {[info exists env(DESI_PRODUCT_ROOT)]} {
 } else {
     set code_root /global/common/software/desi/$env(NERSC_HOST)/desiconda/$desiconda_version/code
 }
-# set PRODUCT_DIR $code_root/$product/$version
 set PRODUCT_DIR /global/common/software/desi/$env(NERSC_HOST)/desiconda/startup/modulefiles/$product
 #
 # This line creates an environment variable pointing to the install
@@ -60,20 +50,9 @@ set PRODUCT_DIR /global/common/software/desi/$env(NERSC_HOST)/desiconda/startup/
 setenv [string toupper $product] $PRODUCT_DIR
 setenv [string toupper $product]_VERSION $version
 #
-# The lines below set various other environment variables.  They assume the
-# template product layout.  These will be set or commented as needed by the
-# desiInstall script.
-#
-# prepend-path PATH $PRODUCT_DIR/bin
-# prepend-path PYTHONPATH $PRODUCT_DIR/lib/python3.5/site-packages
-# prepend-path PYTHONPATH $PRODUCT_DIR/py
-# prepend-path LD_LIBRARY_PATH $PRODUCT_DIR/lib
-# prepend-path IDL_PATH +$PRODUCT_DIR/pro
-#
-# Add any non-standard Module code below this point.
-#
-# These are the external products that we need for most DESI work.
-# Need to make sure these can work on datatran, etc., not just edison and cori.
+# desiconda contains the external products that we need for most DESI work.
+# The value of $desiconda_version, defined above, may change depending
+# on system, e.g. cori v. datatran.
 #
 if { [info exists env(NERSC_HOST)] } {
     set desiconda_modules_root [string map {/code /modulefiles} $code_root]
@@ -84,7 +63,7 @@ if { [info exists env(NERSC_HOST)] } {
 #
 # DESI-specific modules
 #
-module load desiutil/2.0.2
+module load desiutil/3.2.2
 prereq desiutil
 
 module load desitree/0.5.0
@@ -93,8 +72,8 @@ prereq desitree
 # Master versions of most modules:
 # module load specter/master
 # module load desimodel/master
-# specex: stable, slow to compile, not updated daily, so use a tag.
-# module load specex/0.6.4
+# specex: isn't auto-updated every night
+# module load specex/0.7.0
 # module load desitarget/master
 # module load specsim/master
 # module load desispec/master
@@ -104,5 +83,11 @@ prereq desitree
 # module load surveysim/master
 # module load redrock/master
 # module load redrock-templates/master
+# module load prospect/master
+# module load desimeter/master
 # module load simqso/master
 # module load dust/v0_1
+# module load speclite/0.13
+# module load QuasarNP/0.1.2
+
+setenv DESI_SURVEYOPS $env(DESI_ROOT)/survey/ops/surveyops/trunk
