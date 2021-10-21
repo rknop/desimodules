@@ -20,7 +20,16 @@ if ( `basename ${SHELL}` == "csh" || `basename ${SHELL}` == "tcsh" ) then
             set _desi_startup = /global/common/software/desi/${NERSC_HOST}/desiconda/startup/modulefiles
             breaksw
     endsw
-    if ( "${NERSC_HOST}" == "edison" || \
+    if ( ${?DESI_ROOT} ) then
+        # Do nothing, successfully.
+        :
+    else if ( ${?NERSC_HOST} ) then
+        setenv DESI_ROOT /global/cfs/cdirs/desi
+    else
+        echo "Could not determine a valid value of DESI_ROOT!"
+        exit
+    endif
+    if ( "${NERSC_HOST}" == "perlmutter" || \
          "${NERSC_HOST}" == "cori" || \
          "${NERSC_HOST}" == "datatran" ) then
         module use ${_desi_startup}

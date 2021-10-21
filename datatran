@@ -90,4 +90,8 @@ prereq desitree
 # module load speclite/0.13
 # module load QuasarNP/0.1.2
 
+setenv DESI_SPECTRO_CALIB $env(DESI_ROOT)/spectro/desi_spectro_calib/0.2.7
 setenv DESI_SURVEYOPS $env(DESI_ROOT)/survey/ops/surveyops/trunk
+
+# may solve some OpenMP instabilities at NERSC
+# setenv KMP_INIT_AT_FORK FALSE

@@ -19,7 +19,16 @@ if [[ $(basename ${SHELL}) == "bash" || $(basename ${SHELL}) == "sh" ]]; then
             _desi_startup=/global/common/software/desi/${NERSC_HOST}/desiconda/startup/modulefiles
             ;;
     esac
-    if [[ "${NERSC_HOST}" == "edison" || \
+    if [[ -n "${DESI_ROOT}" ]]; then
+        # Do nothing, successfully.
+        :
+    elif [[ -n "${NERSC_HOST}" ]]; then
+        export DESI_ROOT=/global/cfs/cdirs/desi
+    else
+        echo "Could not determine a valid value of DESI_ROOT!"
+        return
+    fi
+    if [[ "${NERSC_HOST}" == "perlmutter" || \
           "${NERSC_HOST}" == "cori" || \
           "${NERSC_HOST}" == "datatran" ]]; then
         module use ${_desi_startup}
