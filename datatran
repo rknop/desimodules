@@ -95,3 +95,4 @@ setenv DESI_SURVEYOPS $env(DESI_ROOT)/survey/ops/surveyops/trunk
 
 # may solve some OpenMP instabilities at NERSC
 # setenv KMP_INIT_AT_FORK FALSE
+setenv OMP_NUM_THREADS 1
