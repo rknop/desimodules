@@ -72,7 +72,6 @@ prereq desitree
 # Master versions of most modules:
 module load specter/master
 module load desimodel/master
-# specex: isn't auto-updated every night
 module load specex/master
 module load desitarget/master
 module load specsim/master
