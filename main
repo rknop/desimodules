@@ -20,7 +20,7 @@ proc ModulesHelp { } {
 # change it.
 #
 set product desimodules
-set version test-master
+set version main
 conflict $product
 set desiconda_version 20211217-2.0.0
 #
