@@ -20,9 +20,9 @@ proc ModulesHelp { } {
 # change it.
 #
 set product desimodules
-set version main
+set version current
 conflict $product
-set desiconda_version 20211217-2.0.0
+set desiconda_version 20200801-1.4.0-spec
 #
 # The line below is another part of the Modules help system.  You can
 # modify the part in quotes if you really need to, but most products should
@@ -72,6 +72,7 @@ prereq desitree
 # Master versions of most modules:
 module load specter/master
 module load desimodel/master
+# specex: isn't auto-updated every night
 module load specex/master
 module load desitarget/master
 module load specsim/master
@@ -86,12 +87,11 @@ module load prospect/master
 module load desimeter/master
 module load simqso/master
 module load dust/v0_1
-module load speclite/master
-module load QuasarNP/0.1.3
+module load speclite/0.13
+module load QuasarNP/0.1.2
 
 setenv DESI_SPECTRO_CALIB $env(DESI_ROOT)/spectro/desi_spectro_calib/trunk
 setenv DESI_SURVEYOPS $env(DESI_ROOT)/survey/ops/surveyops/trunk
 
 # may solve some OpenMP instabilities at NERSC
 setenv KMP_INIT_AT_FORK FALSE
-
