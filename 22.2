@@ -22,10 +22,11 @@ proc ModulesHelp { } {
 set product desimodules
 set version 22.2
 conflict $product
-if { $env(NERSC_HOST) == "perlmutter" } {
-  set desiconda_version 20220119-2.0.1
-} else {
-  set desiconda_version 20211217-2.0.0
+set desiconda_version 20211217-2.0.0
+if {[info exists env(NERSC_HOST)]} {
+   if { $env(NERSC_HOST) == "perlmutter" } {
+      set desiconda_version 20220119-2.0.1
+   }
 }
 #
 # The line below is another part of the Modules help system.  You can
