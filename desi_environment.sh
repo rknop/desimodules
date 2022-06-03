@@ -2,7 +2,7 @@
 # This code is meant to be sourced, not executed.
 # It currently only supports NERSC hosts.
 #
-if [[ $(basename ${SHELL}) == "bash" || $(basename ${SHELL}) == "sh" ]]; then
+if [[ $(basename ${SHELL}) == "bash" || $(basename ${SHELL}) == "sh" || $(basename ${SHELL}) == "zsh" ]]; then
     if [[ $# > 0 ]]; then
         _desi_release="/$1"
     else
