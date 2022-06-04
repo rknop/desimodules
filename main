@@ -76,6 +76,7 @@ prereq desitree
 
 # Master versions of most modules:
 module load specter/master
+module load gpu_specter/master
 module load desimodel/master
 module load specex/master
 module load desitarget/master
