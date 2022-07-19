@@ -26,6 +26,11 @@ set desiconda_version 20211217-2.0.0
 if {[info exists env(NERSC_HOST)]} {
    if { $env(NERSC_HOST) == "perlmutter" } {
       set desiconda_version 20220119-2.0.1
+      # https://docs.nersc.gov/current/#ongoing-issues
+      set MPI4PY_RC_RECV_MPROBE 'False'
+      # https://docs.nersc.gov/development/languages/python/using-python-perlmutter/#mpi-issues
+      set IBV_FORK_SAFE 1
+      set RDMAV_HUGEPAGES_SAFE 1
    }
 }
 #
