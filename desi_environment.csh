@@ -8,18 +8,7 @@ if ( `basename ${SHELL}` == "csh" || `basename ${SHELL}` == "tcsh" ) then
     else
         set _desi_release = ''
     endif
-    switch ( ${_desi_release} )
-        case "/17.*":
-        case '/18.1':
-            set _desi_startup = /global/common/${NERSC_HOST}/contrib/desi/desiconda/startup/modulefiles
-            if ( "${NERSC_HOST}" == "datatran" ) then
-                set _desi_startup = /global/project/projectdirs/desi/software/${NERSC_HOST}/desiconda/startup/modulefiles
-            endif
-            breaksw
-        default:
-            set _desi_startup = /global/common/software/desi/${NERSC_HOST}/desiconda/startup/modulefiles
-            breaksw
-    endsw
+    set _desi_startup = /global/common/software/desi/${NERSC_HOST}/desiconda/startup/modulefiles
     if ( ${?DESI_ROOT} ) then
         # Do nothing, successfully.
         :

@@ -8,17 +8,7 @@ if [[ $(basename ${SHELL}) == "bash" || $(basename ${SHELL}) == "sh" || $(basena
     else
         _desi_release=''
     fi
-    case ${_desi_release} in
-        /17.* | /18.1)
-            _desi_startup=/global/common/${NERSC_HOST}/contrib/desi/desiconda/startup/modulefiles
-            if [[ "${NERSC_HOST}" == "datatran" ]]; then
-                _desi_startup=/global/project/projectdirs/desi/software/${NERSC_HOST}/desiconda/startup/modulefiles
-            fi
-            ;;
-        *)
-            _desi_startup=/global/common/software/desi/${NERSC_HOST}/desiconda/startup/modulefiles
-            ;;
-    esac
+    _desi_startup=/global/common/software/desi/${NERSC_HOST}/desiconda/startup/modulefiles
     if [[ -n "${DESI_ROOT}" ]]; then
         # Do nothing, successfully.
         :
