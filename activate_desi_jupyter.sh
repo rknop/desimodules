@@ -16,8 +16,12 @@
 # "display_name": "DESI 17.6"
 # }
 
+_i=bash
+[[ $(basename ${SHELL}) == "zsh" ]] && _i=zsh
+[[ $(declare -F module) ]] || source /usr/share/lmod/lmod/init/${_i}
+
 version=$1
 connection_file=$2
 
 source /global/common/software/desi/desi_environment.sh ${version}
-exec python -m ipykernel -f ${connection_file}
+exec python -m ipykernel_launcher -f ${connection_file}

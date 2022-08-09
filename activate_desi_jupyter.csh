@@ -16,8 +16,12 @@
 # "display_name": "DESI 17.6"
 # }
 
+set _a = `alias module`
+if ( "${_a}" == "" ) source /usr/share/lmod/lmod/init/tcsh
+unset _a
+
 set version = $1
 set connection_file = $2
 
 source /global/common/software/desi/desi_environment.csh ${version}
-exec python -m ipykernel -f ${connection_file}
+exec python -m ipykernel_launcher -f ${connection_file}
