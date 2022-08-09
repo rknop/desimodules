@@ -24,14 +24,14 @@ set version main
 conflict $product
 set desiconda_version 20211217-2.0.0
 if {[info exists env(NERSC_HOST)]} {
-   if { $env(NERSC_HOST) == "perlmutter" } {
-      set desiconda_version 20220119-2.0.1
-      # https://docs.nersc.gov/current/#ongoing-issues
-      set MPI4PY_RC_RECV_MPROBE 'False'
-      # https://docs.nersc.gov/development/languages/python/using-python-perlmutter/#mpi-issues
-      set IBV_FORK_SAFE 1
-      set RDMAV_HUGEPAGES_SAFE 1
-   }
+    if { $env(NERSC_HOST) == "perlmutter" } {
+        set desiconda_version 20220119-2.0.1
+        # https://docs.nersc.gov/current/#ongoing-issues
+        setenv MPI4PY_RC_RECV_MPROBE "False"
+        # https://docs.nersc.gov/development/languages/python/using-python-perlmutter/#mpi-issues
+        setenv IBV_FORK_SAFE 1
+        setenv RDMAV_HUGEPAGES_SAFE 1
+    }
 }
 #
 # The line below is another part of the Modules help system.  You can
@@ -105,4 +105,3 @@ setenv DESI_SURVEYOPS $env(DESI_ROOT)/survey/ops/surveyops/trunk
 
 # may solve some OpenMP instabilities at NERSC
 setenv KMP_INIT_AT_FORK FALSE
-
