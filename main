@@ -76,7 +76,7 @@ if { [info exists env(NERSC_HOST)] } {
 module load desiutil/main
 prereq desiutil
 
-module load desitree/0.5.0
+module load desitree/0.6.0
 prereq desitree
 
 # Master versions of most modules:
