@@ -29,8 +29,8 @@ if {[info exists env(NERSC_HOST)]} {
         # https://docs.nersc.gov/current/#ongoing-issues
         setenv MPI4PY_RC_RECV_MPROBE "False"
         # https://docs.nersc.gov/development/languages/python/using-python-perlmutter/#mpi-issues
-        setenv IBV_FORK_SAFE 1
-        setenv RDMAV_HUGEPAGES_SAFE 1
+        setenv CXI_FORK_SAFE 1
+        setenv CXI_FORK_SAFE_HP 1
     }
 }
 #
