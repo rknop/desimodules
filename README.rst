@@ -56,5 +56,5 @@ In preparation for a software release:
 3. When the tests pass, copy ``test-release`` to a new file, *e.g.* ``22.2``,
    and edit the version information.
 4. Add the new file.
-5. Check the ``.version`` and ``master`` files for consistency.
+5. Check the ``.version`` and ``main`` files for consistency.
 6. Merge any PR and tag this package with the name of the new file.
