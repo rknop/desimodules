@@ -22,7 +22,7 @@ proc ModulesHelp { } {
 set product desimodules
 set version datatran
 conflict $product
-set desiconda_version 20180102-1.2.2
+set desiconda_version 20220928-2.1.0
 if {[info exists env(NERSC_HOST)]} {
     if { $env(NERSC_HOST) == "perlmutter" } {
         set desiconda_version 20220119-2.0.1
