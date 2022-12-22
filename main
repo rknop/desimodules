@@ -80,7 +80,7 @@ prereq desiutil
 module load desitree/0.6.0
 prereq desitree
 
-# main versions of most modules:
+# Main versions of most modules:
 module load specter/main
 module load gpu_specter/main
 module load desimodel/main

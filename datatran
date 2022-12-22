@@ -22,7 +22,17 @@ proc ModulesHelp { } {
 set product desimodules
 set version datatran
 conflict $product
-set desiconda_version 20180102-1.2.2
+set desiconda_version 20220928-2.1.0
+if {[info exists env(NERSC_HOST)]} {
+    if { $env(NERSC_HOST) == "perlmutter" } {
+        set desiconda_version 20220119-2.0.1
+        # https://docs.nersc.gov/current/#ongoing-issues
+        setenv MPI4PY_RC_RECV_MPROBE "False"
+        # https://docs.nersc.gov/development/languages/python/using-python-perlmutter/#mpi-issues
+        setenv CXI_FORK_SAFE 1
+        setenv CXI_FORK_SAFE_HP 1
+    }
+}
 #
 # The line below is another part of the Modules help system.  You can
 # modify the part in quotes if you really need to, but most products should
@@ -63,36 +73,35 @@ if { [info exists env(NERSC_HOST)] } {
 #
 # DESI-specific modules
 #
-module load desiutil/3.2.2
+module load desiutil/3.2.6
 prereq desiutil
 
-module load desitree/0.5.0
+module load desitree/0.6.0
 prereq desitree
 
-# Master versions of most modules:
-# module load specter/master
-# module load desimodel/master
-# specex: isn't auto-updated every night
-# module load specex/0.7.0
-# module load desitarget/master
-# module load specsim/master
-# module load desispec/master
-# module load desisim/master
-# module load fiberassign/master
-# module load desisurvey/master
-# module load surveysim/master
-# module load redrock/master
-# module load redrock-templates/master
-# module load prospect/master
-# module load desimeter/master
-# module load simqso/master
+# Main versions of most modules:
+# module load specter/main
+# module load desimodel/main
+# module load specex/main
+# module load desitarget/main
+# module load specsim/main
+# module load desispec/main
+# module load desisim/main
+# module load fiberassign/main
+# module load desisurvey/main
+# module load surveysim/main
+# module load redrock/main
+# module load redrock-templates/main
+# module load prospect/main
+# module load desimeter/main
+# module load simqso/main
 # module load dust/v0_1
-# module load speclite/0.13
-# module load QuasarNP/0.1.2
+# module load speclite/main
+# module load QuasarNP/0.1.3
 
-setenv DESI_SPECTRO_CALIB $env(DESI_ROOT)/spectro/desi_spectro_calib/0.2.7
+setenv DESI_SPECTRO_CALIB $env(DESI_ROOT)/spectro/desi_spectro_calib/trunk
 setenv DESI_SURVEYOPS $env(DESI_ROOT)/survey/ops/surveyops/trunk
 
 # may solve some OpenMP instabilities at NERSC
-# setenv KMP_INIT_AT_FORK FALSE
+setenv KMP_INIT_AT_FORK FALSE
 setenv OMP_NUM_THREADS 1
