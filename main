@@ -31,6 +31,7 @@ if {[info exists env(NERSC_HOST)]} {
         # https://docs.nersc.gov/development/languages/python/using-python-perlmutter/#mpi-issues
         setenv CXI_FORK_SAFE 1
         setenv CXI_FORK_SAFE_HP 1
+        module unload cudatoolkit
     }
 }
 #
@@ -105,3 +106,12 @@ setenv DESI_SURVEYOPS $env(DESI_ROOT)/survey/ops/surveyops/trunk
 
 # may solve some OpenMP instabilities at NERSC
 setenv KMP_INIT_AT_FORK FALSE
+
+# work around
+# https://docs.nersc.gov/development/languages/python/using-python-perlmutter/#mpi-issues
+if { [info exists env(NERSC_HOST)] } {
+    if { $env(NERSC_HOST) == "perlmutter" } {
+        module load evp-patch
+    }
+}
+
