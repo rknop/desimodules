@@ -70,6 +70,7 @@ if { [info exists env(NERSC_HOST)] } {
     module use $desiconda_modules_root
     module load desiconda/$desiconda_version
     prereq desiconda
+    setenv DESI_ROOT_READONLY /dvs_ro/cfs/cdirs/desi
 }
 #
 # DESI-specific modules
