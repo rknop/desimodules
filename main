@@ -89,8 +89,7 @@ prereq desitree
 module load specter/main
 module load gpu_specter/main
 module load desimodel/main
-# module load specex/0.8.4
-module load specex/main
+module load specex/0.8.4
 module load desitarget/main
 module load specsim/main
 module load desispec/main
